@@ -10,8 +10,16 @@ let raw_byte_string = br#"hello"#;
 
 // unicode strings:
 let charaster = 'c';
-let string = "str \x41 \n \r \t \\ \0";
+let string = "str \x41 \n \r \t \\ \u{7FFF} \' \" \0";
 let raw_string = r#"hello"#;
+
+// Integer
+let i = 98_222 + 0xff + 0o77 + 0b1111_0000;
+let i = 123i32;
+let u = 123u32 + 123_u32;
+
+// Float
+let f = 1.0 + 1.0f32 + 1.0_f32;
 ```
 
 ## Types and structures
@@ -43,6 +51,4 @@ let e1 = Enum::V1;
 let e2 = Enum::V2("s".to_string());
 let e3 = Enum::V3(999, 888);
 let e4 = Enum::V4 { i: 123, f: 146.0, };
-
-
 ```
