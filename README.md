@@ -71,8 +71,8 @@ impl Rectangle {
 
 ## Generic Data Types
 ```rust
-fn same<T>(value: &T) -> &T {
-    &value
+fn same<T>(value: T) -> T {
+    value
 }
 
 struct Point<T> { x: T, y: T, }
@@ -95,4 +95,22 @@ pt.print();
 
 ## Traits (interfaces)
 ```rust
+trait Summary {
+    fn summarize(&self) -> String;
+}
+
+struct Tweet { username: String, }
+
+impl Summary for Tweet {
+    fn summarize(&self) -> String {
+        format!("{}", self.username)
+    }
+}
+
+fn notify(item: &impl Summary) {}  // 1
+fn notify<T: Summary>(item: &T) {} // 2
+
+fn notify(item: &(impl Summary + Display)) {} // 1
+fn notify<T: Summary + Display>(item: &T) {}  // 2
+
 ```
