@@ -1,6 +1,19 @@
 # fast-rust
 Small rust lang handbook
 
+## Litherals
+```rust
+// ascii strings:
+let byte = b'a';
+let byte_string = b"hello";
+let raw_byte_string = br#"hello"#;
+
+// unicode strings:
+let charaster = 'c';
+let string = "str";
+let raw_string = r#"hello"#;
+```
+
 ## Types and structures
 ```rust
 // Tuples
