@@ -38,6 +38,7 @@ let arr = [1, 2, 3, 4, 5];
 let slice = &arr[..2];
 let slice = &arr[2..];
 let slice = &arr[0..2];
+fn process_slice(s : &[i32]) {}
 
 // Structs
 struct Struct(i32);
@@ -51,4 +52,47 @@ let e1 = Enum::V1;
 let e2 = Enum::V2("s".to_string());
 let e3 = Enum::V3(999, 888);
 let e4 = Enum::V4 { i: 123, f: 146.0, };
+```
+
+## Methods
+```rust
+struct Rectangle { width: u32, eight: u32, }
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+}
+```
+
+## Generic Data Types
+```rust
+fn same<T>(value: &T) -> &T {
+    &value
+}
+
+struct Point<T> { x: T, y: T, }
+
+impl<T : std::fmt::Display> Point<T> {
+    fn print(&self) {
+        println!("x = {}, y = {}", self.x, self.y);
+    }
+}
+
+impl Point<f64> {
+    fn dist(&self) -> f64 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+    }
+}
+
+let pt = Point { x: 1.0, y: 4.0 };
+pt.print();
+```
+
+## Traits (interfaces)
+```rust
 ```
