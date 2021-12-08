@@ -38,13 +38,13 @@ let arr = [1, 2, 3, 4, 5];
 let slice = &arr[..2];
 let slice = &arr[2..];
 let slice = &arr[0..2];
-fn process_slice(s : &[i32]) {}
+fn process_slice(s: &[i32]) {}
 
 // Structs
 struct Struct(i32);
 struct Struct2 { fld1: i32, fld2: f64, }
 let s = Struct2 { fld1: 10, fld2: 42.0 };
-let Struct2 { fld1: a, fld2 : b, } = s;
+let Struct2 { fld1: a, fld2: b, } = s;
 
 // Enums
 enum Enum { V1, V2(String), V3(i32, i32), V4 { i: i32, f: f32, } }
@@ -81,7 +81,7 @@ impl <T> Point<T> {
     fn some_fun(&self) {}
 }
 
-impl<T : std::fmt::Display> Point<T> {
+impl<T: std::fmt::Display> Point<T> {
     fn print(&self) {
         println!("x = {}, y = {}", self.x, self.y);
     }
