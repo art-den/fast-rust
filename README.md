@@ -77,6 +77,10 @@ fn same<T>(value: T) -> T {
 
 struct Point<T> { x: T, y: T, }
 
+impl <T> Point<T> {
+    fn some_fun(&self) {}
+}
+
 impl<T : std::fmt::Display> Point<T> {
     fn print(&self) {
         println!("x = {}, y = {}", self.x, self.y);
@@ -112,5 +116,6 @@ fn notify<T: Summary>(item: &T) {} // 2
 
 fn notify(item: &(impl Summary + Display)) {} // 1
 fn notify<T: Summary + Display>(item: &T) {}  // 2
+
 
 ```
