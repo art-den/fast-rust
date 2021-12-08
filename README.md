@@ -1,7 +1,7 @@
 # fast-rust
 Small rust lang handbook
 
-## Litherals
+## Literals
 ```rust
 // ascii strings:
 let byte = b'a';
@@ -10,7 +10,7 @@ let raw_byte_string = br#"hello"#;
 
 // unicode strings:
 let charaster = 'c';
-let string = "str";
+let string = "str \x41 \n \r \t \\ \0";
 let raw_string = r#"hello"#;
 ```
 
@@ -33,7 +33,7 @@ let slice = &arr[0..2];
 
 // Structs
 struct Struct(i32);
-struct Struct2 { fld1 : i32, fld2 : f64, }
+struct Struct2 { fld1: i32, fld2: f64, }
 let s = Struct2 { fld1: 10, fld2: 42.0 };
 let Struct2 { fld1: a, fld2 : b, } = s;
 
