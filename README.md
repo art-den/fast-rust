@@ -81,16 +81,16 @@ impl <T> Point<T> {
     fn some_fun(&self) {}
 }
 
-impl<T: std::fmt::Display> Point<T> {
-    fn print(&self) {
-        println!("x = {}, y = {}", self.x, self.y);
-    }
+impl<T: Display> Point<T> {
+    fn print(&self) {}
+}
+
+impl<T> Point<T> where T: Display {
+    fn print(&self) {}
 }
 
 impl Point<f64> {
-    fn dist(&self) -> f64 {
-        (self.x.powi(2) + self.y.powi(2)).sqrt()
-    }
+    fn dist(&self) -> f64 {}
 }
 
 let pt = Point { x: 1.0, y: 4.0 };
@@ -113,9 +113,11 @@ impl Summary for Tweet {
 
 fn notify(item: &impl Summary) {}  // 1
 fn notify<T: Summary>(item: &T) {} // 2
+fn notify<T>(item: &T) where T: Summary {} // 2
 
 fn notify(item: &(impl Summary + Display)) {} // 1
 fn notify<T: Summary + Display>(item: &T) {}  // 2
+fn notify<T>(item: &T) where T: Summary + Display {}  // 2
 
 
 ```
