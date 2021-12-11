@@ -56,7 +56,7 @@ let e4 = Enum::V4 { i: 123, f: 146.0, };
 
 ## Methods
 ```rust
-struct Rectangle { width: u32, eight: u32, }
+struct Rectangle { width: u32, height: u32, }
 
 impl Rectangle {
     fn area(&self) -> u32 {
