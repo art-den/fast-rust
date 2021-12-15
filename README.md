@@ -118,32 +118,49 @@ fn notify<T>(item: &T) where T: Summary {} // 3
 fn notify(item: &(impl Summary + Display)) {}         // 1
 fn notify<T: Summary + Display>(item: &T) {}          // 2
 fn notify<T>(item: &T) where T: Summary + Display {}  // 3
+
+pub trait Iterator {
+    type Item;
+
+    fn next(&mut self) -> Option<Self::Item>;
+}
+
+// Advanced:
+pub trait Iterator {
+    type Item; // Item
+    fn next(&mut self) -> Option<Self::Item>; // Self::Item
+}
+
+impl Iterator for Counter {
+    type Item = u32;
+    fn next(&mut self) -> Option<Self::Item> ...
+}
 ```
 
 ## Match
 ```rust
 Some(50) => println!("Got 50"),
 Some(y) => println!("{}", y),
-//...
+
 1 | 2 => println!("one or two"),
-//...
+
 1..=5 => println!("one through five"),
-//...
+
 Point { x, y: 0 } => println!("On the x axis at {}", x),
 Point { x: 0, y } => println!("On the y axis at {}", y),
 Point { x, y } => println!("On neither axis: ({}, {})", x, y),
 Point { x: x_var, y: y_var } => ...
-//...
+
 Message::Move { x, y } => ...
 Message::ChangeColor(r, g, b) => ...
-//...
+
 Point { x, .. } => println!("{}", x),
 Point { .., x } => println!("{}", x),
 (first, .., last) => ...
-//...
+
 Some(x) if x < 5 => println!("less than five: {}", x),
 4 | 5 | 6 if y => println!("yes"),
-//...
+
 Message::Hello { id: id_variable @ 3..=7, } => println!("{}", id_variable),
 Message::Hello { id: 10..=12 } => ...
 
