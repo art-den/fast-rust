@@ -123,16 +123,10 @@ fn notify<T>(item: &T) where T: Summary + Display {}  // static dispatch
 fn returns_summarizable() -> Box<&dyn Summary> { ... // dynamic dispatch
 fn returns_summarizable() -> impl Summary { ... // for one return type
 
-pub trait Iterator {
-    type Item;
-
-    fn next(&mut self) -> Option<Self::Item>;
-}
-
 // Advanced:
 pub trait Iterator {
-    type Item; // Item
-    fn next(&mut self) -> Option<Self::Item>; // Self::Item
+    type Item;
+    fn next(&mut self) -> Option<Self::Item>;
 }
 
 impl Iterator for Counter {
