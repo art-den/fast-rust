@@ -114,10 +114,14 @@ impl Summary for Tweet {
 fn notify(item: &impl Summary) {}          // 1
 fn notify<T: Summary>(item: &T) {}         // 2
 fn notify<T>(item: &T) where T: Summary {} // 3
+fn notify (item: &dyn Summary) {}          // 4 dynamic dispatch
 
 fn notify(item: &(impl Summary + Display)) {}         // 1
 fn notify<T: Summary + Display>(item: &T) {}          // 2
 fn notify<T>(item: &T) where T: Summary + Display {}  // 3
+
+fn returns_summarizable() -> Box<&dyn Summary> { ... // dynamic dispatch
+fn returns_summarizable() -> impl Summary { ... // for one return type
 
 pub trait Iterator {
     type Item;
