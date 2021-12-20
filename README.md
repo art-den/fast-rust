@@ -134,9 +134,9 @@ impl Iterator for Counter {
     fn next(&mut self) -> Option<Self::Item> ...
 }
 
-fn use_iterator(it: impl Iterator<Item = i32>) { ... // static dispatch
+fn use_iterator(it: &mut impl Iterator<Item = i32>) { ... // static dispatch
 
-fn use_iterator(it: &dyn Iterator<Item = i32>) { ... // dynamic dispatch
+fn use_iterator(it: &mut dyn Iterator<Item = i32>) { ... // dynamic dispatch
 
 ```
 
