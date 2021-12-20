@@ -133,6 +133,11 @@ impl Iterator for Counter {
     type Item = u32;
     fn next(&mut self) -> Option<Self::Item> ...
 }
+
+fn use_iterator(it: impl Iterator<Item = i32>) { ... // static dispatch
+
+fn use_iterator(it: &dyn Iterator<Item = i32>) { ... // dynamic dispatch
+
 ```
 
 ## Match
